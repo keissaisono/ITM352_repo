@@ -22,7 +22,7 @@ main {
     background-image: url('../SmartPhoneProducts1/images/phone_globe.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; /* To cover the entire element */
+    background-size: cover; 
     color: white;
 }
 
