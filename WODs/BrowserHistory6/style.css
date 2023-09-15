@@ -51,9 +51,77 @@ img {
 
 
 
-img {
+/* Apply Oswald font to all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+
+}
+
+body, p, span {
+    font-family: 'open sans', sans-serif;
+
+}
+
+body {
+    color: yellow;
+
+}
+
+body {
+    margin: 10px 50px; /* 10px top and bottom, 50px left and right */
+    max-width: 950px; /* Text width of 950px */
+
+}
+
+body {
+    background-color: black;
+
+}
+
+
+
+.navbar {
+    display: flex;
+    background-color: black;
+}
+
+.navbar a {
+    padding: 10px 50px;
+    color: darkblue;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.browser-section {
+    width: 300px;
+    margin: 50px;
+}
+
+
+
+
+
+
+
+.left {
     float: left;
-    margin-right: 10px;
+    width: 300px;
+    padding: 1em;
+
+}
+
+.right {
+    float: right;
+    width: 300px;
+    padding: 1em;
+
+}
+
+.center {
+    margin-left: 300px;
+    margin-right: 300px;
     padding: 1em;
 
 }
