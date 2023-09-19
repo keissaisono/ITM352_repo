@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script src="./products_data.js"></script>
+        <title>Smartphone Products</title>
+        <p style="text-align: center; font-weight: bold;">
+            Hits:<span id="hits_span">0</span>
+            Spins:<span id="spins_span">0</span>
+        </p>
+        <link rel="stylesheet" type="text/css" href="products-style.css">   
+        <script>
+            const store_name = "Keissa";
+        </script>
+    </head>
+
+    <body onload="hits_span.innerHTML = hits; spins_span.innerHTML = spins;">
+
+        <h1>
+            <Script>
+                document.write(store_name + "'s Used Smart Phone Store");
+            </Script>
+
+        </h1>
+        
+
+    <div><main>
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+            <h2><script>document.write(name1)</script></h2>
+            <p>$<script>document.write(price1)</script></p>
+            <img id="image1_id"><script>image1_id.src = image1;</script> 
+        </section>
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+            <h2><script>document.write(name2)</script></h2>
+            <p>$<script>document.write(price2)</script></p>
+            <img id="image2_id"><script>image2_id.src = image2;</script>
+        </section>
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+            <h2><script>document.write(name3)</script></h2>
+            <p>$<script>document.write(price3)</script></p>
+            <img id="image3_id"><script>image3_id.src = image3;</script>
+        </section>
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+            <h2><script>document.write(name4)</script></h2>
+            <p>$<script>document.write(price4)</script></p>
+            <img id="image4_id"><script>image4_id.src = image4;</script>
+        </section>
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+            <h2><script>document.write(name5)</script></h2>
+            <p>$<script>document.write(price5)</script></p>
+            <img id="image5_id"><script>image5_id.src = image5;</script>
+        </section>
+
+    </main>
+    </div>
+
+    <script>
+        function changeClassName(element) {
+            element.className = 'item rotate';
+        }
+        function resetClassName(element) {
+            element.className = 'item';
+        }
+        let hits= 0;
+        let spins=1;
+        hits_span.innerHTML = hits;
+        spins_span.innerHTML = spins;
+
+
+    </script>
+    </body>
+
+    <footer>
+        <h1>
+            <script>
+                document.write("Your one stop shop for used phones - "+store_name+"'s"); 
+            </script>
+        </h1>
+    </footer>
+        
+    
+</html>
