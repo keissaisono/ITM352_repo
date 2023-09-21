@@ -5,6 +5,7 @@
             Hits:<span id="hits_span">0</span>
             Spins:<span id="spins_span">0</span>
             Hit/Spin:<span id="hit_spin_span">0</span>
+        <header style="text-align: center;"></header>
         </p>
         <link rel="stylesheet" type="text/css" href="products-style.css">  
         
@@ -44,17 +45,20 @@
             <p>&dollar;75</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
+        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
             <h2>Nokia</h2>
             <p>&dollar;35</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
+        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
             <h2>Samsung</h2>
             <p>&dollar;45</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
+        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
             <h2>Blackberry</h2>
             <p>&dollar;10</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg">
