@@ -4,6 +4,7 @@
         <p style="text-align: center; font-weight: bold;">
             Hits:<span id="hits_span">0</span>
             Spins:<span id="spins_span">0</span>
+            Hit/Spin:<span id="hit_spin_span">0</span>
         </p>
         <link rel="stylesheet" type="text/css" href="products-style.css">   
         <script>
@@ -23,12 +24,13 @@
 
     <div>
     <main>
-        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML);" 
+        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML);">
             <h2>HTC</h2>
             <p>&dollar;40</p>
             <img src= "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"> 
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits+=2;">
             <h2>Apple</h2>
             <p>&dollar;75</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg">
@@ -60,7 +62,7 @@
             element.className = 'item';
         }
         let hits= 0;
-        let spins=1;
+        let spins=0;
         hits_span.innerHTML = hits;
         spins_span.innerHTML = spins;
 
