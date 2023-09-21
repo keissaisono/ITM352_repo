@@ -24,6 +24,7 @@ main {
     background-position: center;
     background-size: cover; 
     color: black;
+
 }
 
 /* Styling the products display */
@@ -43,4 +44,8 @@ body > div {
   to {
     transform: rotate(359deg);
   }
+}
+
+header {
+  text-align: center;
 }
