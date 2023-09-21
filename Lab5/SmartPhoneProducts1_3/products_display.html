@@ -6,10 +6,19 @@
             Spins:<span id="spins_span">0</span>
             Hit/Spin:<span id="hit_spin_span">0</span>
         </p>
-        <link rel="stylesheet" type="text/css" href="products-style.css">   
+        <link rel="stylesheet" type="text/css" href="products-style.css">  
+        
+        <h1>
         <script>
             const store_name = "Keissa";
+            let first_name = "Keissa";
+            let last_name = "Isono";
+            let initials = `${first_name[0]}. ${last_name[0]}.`;
+            let formattedName = "<span style='font-size: 60px;'><strong>" + first_name + "</strong> <em>" + last_name + "</em></span>";
         </script>
+        </h1>
+
+
     </head>
 
     <body onload="hits_span.innerHTML = hits; spins_span.innerHTML = spins;">
@@ -18,7 +27,7 @@
             <Script>
                 document.write(store_name + "'s Used Smart Phone Store");
             </Script>
-
+         
         </h1>
         
 
@@ -36,20 +45,17 @@
             <p>&dollar;75</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
-        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
             <h2>Nokia</h2>
             <p>&dollar;35</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
-        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
             <h2>Samsung</h2>
             <p>&dollar;45</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg">
         </section>
-        <section class="item" onmouseover="changeClassName(this); spins=spins+1; spins_span.innerHTML = spins; hit_spin_span.innerHTML=(hits/spins).toFixed(2);" 
-        onclick="resetClassName(this); hits=hits+=2; hits_span.innerHTML = hits; hit_spin_span.innerHTML=(hits_span.innerHTML/spins_span.innerHTML).toFixed(2);">
+        <section class="item" onmouseover="changeClassName(this); spins_span.innerHTML = spins++;" onclick="resetClassName(this); hits_span.innerHTML = hits++;">
             <h2>Blackberry</h2>
             <p>&dollar;10</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg">
@@ -75,11 +81,34 @@
     </body>
 
     <footer>
-        <h1>
-            <script>
-                document.write("Your one stop shop for used phones - "+store_name+"'s"); 
-            </script>
-        </h1>
+    <h1>
+    <script>
+        let line = 1;
+        let now = new Date();
+        let hours = now.getHours();
+
+    document.write(`
+    <table style="margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse;">
+        <tr>
+            <th colspan="2">
+                <h1>Your One Stop For Used Phones - ${initials}'s</h1>
+            </th>
+        </tr>
+        <tr>
+            <td>${line++}.</td>
+            <td>Copyright @ ${first_name} ${last_name}</td>
+        </tr>
+        <tr>
+            <td>${line++}.</td>
+            <td>${now.getFullYear()}</td>
+        </tr>
+        <tr>
+            <td>${line++}.</td>
+            <td>${(hours + 11) % 12 + 1}:${now.getMinutes()} ${(hours < 12) ? 'AM' : 'PM'}</td>
+        </tr>        
+    </table> `);       
+    </script>    
+    </h1>  
     </footer>
         
     
