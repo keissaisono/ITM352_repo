@@ -4,7 +4,7 @@ let last_name = "Isono";
 let initials = `${first_name[0]}. ${last_name[0]}.`;
 let formattedName = "<span style='font-size: 60px;'><strong>" + first_name + "</strong> <em>" + last_name + "</em></span>";
 
-src="products_display.js"
+src="products_display1.js"
 
 top_title.innerHTML=(formattedName);
 document.write(formattedName);
