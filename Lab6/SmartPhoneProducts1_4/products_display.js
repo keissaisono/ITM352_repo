@@ -4,15 +4,21 @@ let last_name = "Isono";
 let initials = `${first_name[0]}. ${last_name[0]}.`;
 let formattedName = "<span style='font-size: 60px;'><strong>" + first_name + "</strong> <em>" + last_name + "</em></span>";
 
+src="products_display.js"
+
+top_title.innerHTML=(formattedName);
+document.write(formattedName);
+
+
 function changeClassName(element) {
             element.className = 'item rotate';
             spins=spins+1; 
-            spins_span.innerHTML = spins; hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
+            spins_span.innerHTML = spins; hit_spin_span.innerHTML=Number(hits/spins).toFixed(2);
         }
         function resetClassName(element) {
             element.className = 'item';
             hits=hits+=2; 
-            hits_span.innerHTML = hits; hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
+            hits_span.innerHTML = hits; hit_spin_span.innerHTML=Number(hits/spins).toFixed(2);
         }
         let hits= 0;
         let spins=0;
@@ -43,5 +49,3 @@ document.write(`
             <td>${(hours + 11) % 12 + 1}:${now.getMinutes()} ${(hours < 12) ? 'AM' : 'PM'}</td>
         </tr>        
     </table> `);       
-  
-src="products_display.js"
