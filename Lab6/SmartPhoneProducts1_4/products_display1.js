@@ -53,7 +53,7 @@ function resetClassName(element) {
     } else {
         changeClassName(element);
 
-    }
+    } 
 
     if(spins<2*hits&&hits<spins){
         //wins=true;
