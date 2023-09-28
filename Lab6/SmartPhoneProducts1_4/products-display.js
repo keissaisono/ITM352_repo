@@ -15,10 +15,9 @@ spins_span.innerHTML = spins;
 
 //this should be two functions or more but... it changes the item name to rotate for the images and uodates the spin cound and calculates hits/spins ratio, sending both to the DOM
 function changeClassName(element) {
-    if (element.className=='item rotate'){
-        spins=spins;
-    } else {
+    if (element.className=='item'){
         spins=spins+1;
+        element.className = 'item rotate';
     }
 
     //element.className = 'item rotate';
@@ -74,9 +73,9 @@ function changeClassName(element) {
 
 //this should be two functions or more but... it changes the item name by removing the rotate for the images and updates the its count and calculates hits/spins ratio, sending both to the DOM
 function resetClassName(element) {
-    if(element.className = 'item'){
-        element.className = 'item';
+    if(element.className== 'item rotate'){
         hits=hits+=2;
+        element.className='item';
     } else {
         changeClassName(element);
     }
@@ -87,6 +86,7 @@ function resetClassName(element) {
     } else {
         //wins=false;
     }
+}
     //win_span.innerHTML=wins;
     win_span.innerHTML=over_half;
     hits_span.innerHTML = hits;
@@ -125,15 +125,5 @@ function resetClassName(element) {
 
 //win_span.innerHTML=wins;
     win_span.innerHTML=over_half;
-    spins_span.innerHTML=.toFixed(2);
-    if(spins<2*hits&&hits<spins){
-        //wins=true;
-        over_half=true;
-    } else {
-        //wins=false;
-    }
-
-    //win_span.innerHTML=wins;
-    win_span.innerHTML=over_half;
-}
+    
 
