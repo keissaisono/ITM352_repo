@@ -1,14 +1,14 @@
 // define a variable for the month entry textbox and assign it the value from the DOM for that element
-let monthInput=document.getElementById("month Input")
+let monthInput=document.getElementById("monthInput");
 // define a variable for the result to be sent to the DOM and assign it the value from the DOM for that element (which is currently nothing)
 let result=document.getElementById("result");
 
 // Add an event listening to the butter
-document.querySelector('button').addEventListener('click', function(){
+document.querySelector('button').addEventListener('click', function () {
     //note that the code for this program only executes when the button is clicked
 
     //define and assign a new month input variable as lowercase of input to make the switch statement easier to deal with
-    let month=monthInput.toLowerCase();
+    let month=monthInput.value.toLowerCase();
 
     //intialize num_days to -1 (default value) because ...
     let num_days = -1;
@@ -50,5 +50,5 @@ document.querySelector('button').addEventListener('click', function(){
     } else {
         document.getElementById("result").innerHTML = `The month of ${month} has ${num_days} days.`;
     }
-    
+
 });
