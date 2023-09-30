@@ -12,20 +12,17 @@ let quantity2 = 1;
 let price2 = 2.64;
 let extended_price2 = quantity2 * price2;
 
-
 // Product 3
 let item3 = 'Nautica Cologne';
 let quantity3 = 1;
 let price3 = 6.17;
 let extended_price3 = quantity3 * price3;
 
-
 // Product 4
 let item4 = 'Rubbing Alcohol';
 let quantity4 = 3;
 let price4 = 0.98;
 let extended_price4 = quantity4 * price4;
-
 
 // Product 5
 let item5 = 'Colgate Classic Toothbrush';
@@ -46,33 +43,42 @@ let total = subtotal + taxAmount;
 // populate the table rows using DOM manipulation
 let table = document.getElementById('invoiceTable');
 
-let row = table.insertRow(); //make new row for each item
-row.insertCell(0).innerHTML = $(item1);
-row.insertCell(1).innerHTML = $(quantity1);
-row.insertCell(2).innerHTML = $(price1);
-row.insertCell(3).innerHTML = ('$' + '$(extended_price1)');
+// Product 1
+let row = table.insertRow();
+row.insertCell(0).innerHTML = item1;
+row.insertCell(1).innerHTML = quantity1;
+row.insertCell(2).innerHTML = '$' + price1.toFixed(2);
+row.insertCell(3).innerHTML = '$' + extended_price1.toFixed(2);
+
+// Product 2
 row = table.insertRow();
-row = table.insertRow(); //make new row for each item
-row.insertCell(0).innerHTML = $(item2);
-row.insertCell(1).innerHTML = $(quantity2);
-row.insertCell(2).innerHTML = $(price2);
-row.insertCell(3).innerHTML = ('$' + '$(extended_price2)');
+row.insertCell(0).innerHTML = item2;
+row.insertCell(1).innerHTML = quantity2;
+row.insertCell(2).innerHTML = '$' + price2.toFixed(2);
+row.insertCell(3).innerHTML = '$' + extended_price2.toFixed(2);
+
+// Product 3
 row = table.insertRow();
-row = table.insertRow(); //make new row for each item
-row.insertCell(0).innerHTML = $(item3);
-row.insertCell(1).innerHTML = $(quantity3);
-row.insertCell(2).innerHTML = $(price3);
-row.insertCell(3).innerHTML = ('$' + '$(extended_price3)');
+row.insertCell(0).innerHTML = item3;
+row.insertCell(1).innerHTML = quantity3;
+row.insertCell(2).innerHTML = '$' + price3.toFixed(2);
+row.insertCell(3).innerHTML = '$' + extended_price3.toFixed(2);
+
+// Product 4
 row = table.insertRow();
-row = table.insertRow(); //make new row for each item
-row.insertCell(0).innerHTML = $(item4);
-row.insertCell(1).innerHTML = $(quantity4);
-row.insertCell(2).innerHTML = $(price4);
-row.insertCell(3).innerHTML = ('$' + '$(extended_price4)');
+row.insertCell(0).innerHTML = item4;
+row.insertCell(1).innerHTML = quantity4;
+row.insertCell(2).innerHTML = '$' + price4.toFixed(2);
+row.insertCell(3).innerHTML = '$' + extended_price4.toFixed(2);
+
+// Product 5
 row = table.insertRow();
-row = table.insertRow(); //make new row for each item
-row.insertCell(0).innerHTML = $(item5);
-row.insertCell(1).innerHTML = $(quantity5);
-row.insertCell(2).innerHTML = $(price5);
-row.insertCell(3).innerHTML = ('$' + '$(extended_price5)');
-row = table.insertRow();
+row.insertCell(0).innerHTML = item5;
+row.insertCell(1).innerHTML = quantity5;
+row.insertCell(2).innerHTML = '$' + price5.toFixed(2);
+row.insertCell(3).innerHTML = '$' + extended_price5.toFixed(2);
+
+// set the subtotal, tax, and total cells
+document.getElementById('subtotal_cell').innerHTML = '$' + subtotal.toFixed(2);
+document.getElementById('tax_cell').innerHTML = '$' + taxAmount.toFixed(2);
+document.getElementById('total_cell').innerHTML = '$' + total.toFixed(2);
