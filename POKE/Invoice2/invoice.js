@@ -49,7 +49,7 @@ let shippingRate = 2.00;
     }
   
 // Calculate total
-let total = subtotal + taxAmount;
+let total = subtotal + taxAmount + shippingRate;
 
 // populate the table rows using DOM manipulation
 let table = document.getElementById('invoiceTable');
