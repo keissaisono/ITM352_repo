@@ -121,16 +121,12 @@ for (let i=0; eval("typeof name"+i)!='undefined'; i++) {
         console.log (i+'. '+eval('name'+i));
     }
 }
-//4.2
-//create a table header
-document.write('<table border="1"');
-document.write('<tr><th>Number</th><th>Item</th></tr>');
-
-//loop to output rows
-for (let i=1; eval("typeof name"+i) !='undefined'; i++) {
-    document.write('<tr><td>${i}</td><td>${eval("name"+i)}</td></tr>');
-
+//excercise 4.2
+document.write('<table border="1">');
+document.write('<thead><tr><th>Number</th><th>Item</th></tr></thead>');
+document.write('<tbody>');
+for (let i = 1; i <= num_products; i++) {
+    document.write(`<tr><td>${i}</td><td>${eval('name' + i)}</td></tr>`);
 }
+document.write('</tbody></table>');
 
-//close the table
-document.write('</table>');
