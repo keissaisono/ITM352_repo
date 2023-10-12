@@ -33,3 +33,26 @@ for (let i=0; i < product_quantities.length; i++) {
     document.write("</tr>");
 }
 document.write("</table>");
+
+/* Lab 8 task 4.1 */
+function addNewRow() {
+    let table = document.querySelector('table');
+
+    let newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td>blank</td>
+        <td>blank</td>
+        <td>blank</td>
+        <td>blank</td>
+        <td>blank</td>
+    `;
+}
+
+// Add a click event listener to the table to trigger the addNewRow function
+document.addEventListener('DOMContentLoaded', function () {
+    let table = document.querySelector('table');
+    table.addEventListener('click', addNewRow);
+});
+
+
+
