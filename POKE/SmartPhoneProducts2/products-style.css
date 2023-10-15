@@ -9,11 +9,6 @@ img {
     height: 200px;
 }
 
-/* Typography */
-h1, h2 {
-    text-align: center;
-}
-
 /* Block styling */
 main {
     display: flex;
@@ -51,5 +46,10 @@ header {
 }
 
 footer {
+  text-align: center;
+}
+
+/* Typography */
+h1, h2 {
   text-align: center;
 }
