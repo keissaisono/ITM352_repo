@@ -32,7 +32,7 @@ let price5 = 10.00;
 let image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
 
 
-
+// change the eval to const
 for (let i=1; eval("typeof name"+i) !='undefined'; i++){
     document.querySelector('.main').innerHTML += `
     <section class="item" onmouseover="changeClassName(this);"
@@ -40,10 +40,13 @@ for (let i=1; eval("typeof name"+i) !='undefined'; i++){
         <h2>${eval("name"+i)}</h2>
         <p>$${eval("price"+i)}</p>
         <img src="${eval("image"+i)}" />
-    
     </section>`;
 }
 
+//create variables to push to the DOM for current year and time in the footer
+const currentYear = new Date().getFullYear();
+const currentTime = new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
+footer.innerHTML = `Copyright ${currentYear} ${store_name} - ${currentTime}`;
 
 function changeClassName(element) {
     if(element.className=='item'){
