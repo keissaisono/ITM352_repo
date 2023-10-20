@@ -11,35 +11,74 @@ let over_half=false;
 hits_span.innerHTML = hits; 
 spins_span.innerHTML = spins;
 
-let name1 = "HTC";
+//convert variables into product information objects
+const product1 = {
+    name: "HTC",
+    price: 40.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"
+};
+
+const product2 = {
+    name: "Apple",
+    price: 75.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
+};
+
+const product3 = {
+    name: "Nokia",
+    price: 35.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
+};
+
+const product4 = {
+    name: "Samsung",
+    price: 45.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"
+};
+
+const product5 = {
+    name: "Blackberry",
+    price: 10.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
+};
+
+//create an array called products to hold the five product objects
+const products = [product1, product2, product3, product4, product5];
+
+/*let name1 = "HTC";
 let price1 = 40.00;
 let image1 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg";
+*/
 
-let name2 = "Apple";
+/*let name2 = "Apple";
 let price2 = 75.00;
 let image2 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg";
+*/
 
-let name3 = "Nokia";
+/*let name3 = "Nokia";
 let price3 = 35.00;
 let image3 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg";
+*/
 
-let name4 = "Samsung";
+/*let name4 = "Samsung";
 let price4 = 45.00;
 let image4 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg";
+*/
 
-let name5 = "Blackberry";
+/*let name5 = "Blackberry";
 let price5 = 10.00;
 let image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
-
+*/
 
 // change the eval to const
-for (let i=1; eval("typeof name"+i) !='undefined'; i++){
+for (let i=0; i < products.length; i++) {
+    const product = products[i];
     document.querySelector('.main').innerHTML += `
     <section class="item" onmouseover="changeClassName(this);"
     onclick="resetClassName(this);">
-        <h2>${eval("name"+i)}</h2>
-        <p>$${eval("price"+i)}</p>
-        <img src="${eval("image"+i)}" />
+        <h2>${product.name}</h2>
+        <p>$${product.price}</p>
+        <img src="${product.image}" />
     </section>`;
 }
 
