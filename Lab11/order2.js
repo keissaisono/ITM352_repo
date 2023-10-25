@@ -50,7 +50,8 @@ function displayPurchase() {
         let message = "Thank you for ordering ${quantity} things!";
         document.body.innerHTML = message;
     } else {
-        alert(validationMessage = " Please enter a positive integer for quantity.")
+        alert(validationMessage+" Please enter a positive integer for quantity.");
+        
         document.getElementById('qty_textbox').value = "";
     }
 
