@@ -9,9 +9,10 @@ function formSubmission() {
         document.getElementById("invalidQuantity").innerHTML = validationMessage;
      
     } else {
+        window.location.href = `display_purchase.html?qty_textbox=${quantity}`;
         //window.location.href = `display_purchase.html?qty_textbox=${quantity}`;
-        let message = `Thank you for ordering ${quantity} things!`;
-        document.body.innerHTML = message;
+        //let message = `Thank you for ordering ${quantity} things!`;
+        //document.body.innerHTML = message;
     }
     return false;
  }
