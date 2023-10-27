@@ -3,7 +3,7 @@
 //declare and push to the DOM the store name at top and bottom
 const store_name="Keissa Isono";
 top_title.innerHTML=(store_name + "'s Used Smart Phone Store");
-//send store name infor to the footer title
+//send store name info to the footer title
 bottom_title.innerHTML=("Your one stop shop for used phones - "+store_name+"'s");
 
 let hits = 0;
