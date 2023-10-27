@@ -1,8 +1,8 @@
 // invoice3.js
 
+import { itemData, quantity } from './products_data.js';
 const params = new URL (document.location).searchParams;
 
-let quantity=[];
 
 for (let i = 0; i < itemData.length; i++) {
   let quantityValue = params.get(`quantity${i}`);
@@ -42,7 +42,7 @@ document.getElementById('subtotal_cell').innerHTML = '$' + subtotal.toFixed(2);
 document.getElementById('tax_cell').innerHTML = '$' + taxAmount.toFixed(2);
 document.getElementByID('shipping_cell').innerHTML = '$' + shippingCharge.toFixed(2);
 
-function validateQuantity (quantity) {
+/*function validateQuantity (quantity) {
   let errorMessage = "";
 
   switch (true) {
@@ -62,10 +62,10 @@ function validateQuantity (quantity) {
       errorMessage = "";
       break;
   }
-}
+}*/
 
 //I tried a different method..but it didn't work
-/*function validateQuantity (quantity) {
+function validateQuantity (quantity) {
   if (isNaN(quantity)) {
   return "Not a number";
   }else if (quantity < 0 && !Number.isInteger(quantity)) {
@@ -77,7 +77,7 @@ function validateQuantity (quantity) {
   }else {
   return "";
   }
-  }*/
+  }
   
 
 //function to generate table rows and apply quantity validation

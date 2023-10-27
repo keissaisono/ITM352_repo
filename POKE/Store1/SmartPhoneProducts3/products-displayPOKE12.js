@@ -1,9 +1,7 @@
-// products-displayPOKE12.js
-
 //declare and push to the DOM the store name at top and bottom
 const store_name="Keissa Isono";
 top_title.innerHTML=(store_name + "'s Used Smart Phone Store");
-//send store name info to the footer title
+//send store name infor to the footer title
 bottom_title.innerHTML=("Your one stop shop for used phones - "+store_name+"'s");
 
 let hits = 0;
@@ -13,106 +11,62 @@ let over_half=false;
 hits_span.innerHTML = hits; 
 spins_span.innerHTML = spins;
 
-//convert variables into product information objects
-const product1 = {
-    name: "HTC",
-    price: 40.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"
+//Product information
+/*let product1 = {
+name:  "HTC",
+price:  40.00,
+image:  "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"
 };
 
-const product2 = {
-    name: "Apple",
-    price: 75.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
+let product2 = {
+name:  "Apple",
+price:  75.00,
+image:  "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
 };
 
-const product3 = {
-    name: "Nokia",
-    price: 35.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
+let product3 = {
+name:  "Nokia",
+price:  35.00,
+image:  "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
 };
 
-const product4 = {
-    name: "Samsung",
-    price: 45.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"
+let product4 = {
+name:  "Samsung",
+price:  45.00,
+image:  "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"
 };
 
-const product5 = {
-    name: "Blackberry",
-    price: 10.00,
-    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
+let product5 = {
+name:  "Blackberry",
+price:  10.00,
+image:  "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
 };
-
-//create an array called products to hold the five product objects
-const products = [product1, product2, product3, product4, product5];
-
-/*let name1 = "HTC";
-let price1 = 40.00;
-let image1 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg";
 */
+//Array for products
+products = [product1,product2,product3,product4,product5];
 
-/*let name2 = "Apple";
-let price2 = 75.00;
-let image2 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg";
-*/
 
-/*let name3 = "Nokia";
-let price3 = 35.00;
-let image3 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg";
-*/
-
-/*let name4 = "Samsung";
-let price4 = 45.00;
-let image4 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg";
-*/
-
-/*let name5 = "Blackberry";
-let price5 = 10.00;
-let image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
-*/
-
-// change the eval to const
-for (let i=0; i < products.length; i++) {
-    const product = products[i];
+for (i = 0; i < products.length; i++){
     document.querySelector('.main').innerHTML += `
     <section class="item" onmouseover="changeClassName(this);"
     onclick="resetClassName(this);">
-        <h2>${product.name}</h2>
-        <p>$${product.price}</p>
-        <img src="${product.image}" />
-        <label id="quantity${i}_label" for="quantity${i}">Quantity Desired</label>
-        <input type="text" name="quantity${i}" id="quantity${i}"> 
+        <h2>${products[i].name}</h2>
+        <p>$${products [i].price}</p>
+        <img src="${products [i].image}" />
+    
     </section>`;
 }
 
-//create variables to push to the DOM for current year and time in the footer
-const currentYear = new Date().getFullYear();
-const currentTime = new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
-footer.innerHTML = `Copyright ${currentYear} ${store_name} - ${currentTime}`;
 
-const footerTable = `
-    <table>
-        <tr>
-            <td></td>
-            <td class="table-header">Your One Stop For Used Phones - ${first_name.charAt(0).toUpperCase() + first_name.slice(1)}</td>
-        </tr>
-        <tr>
-            <td>1.</td>
-            <td>Copyright @ ${first_name} ${last_name}</td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>${currentYear}</td>
-        </tr>
-        <tr>
-            <td>3.</td>
-            <td>${currentTime}</td>
-        </tr>
-    </table>
-`;
 
-bottom_title.innerHTML = footerTable;
+
+
+
+
+
+
+
+
 
 function changeClassName(element) {
     if(element.className=='item'){
