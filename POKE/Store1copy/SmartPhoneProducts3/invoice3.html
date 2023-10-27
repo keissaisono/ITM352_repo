@@ -36,5 +36,26 @@
           </tfoot>
         </table>
         <script src="invoice3.js" type="module"></script>
+      <script>
+        const params = (new URL(document.location)).searchParams;
+        const quantities = [];
+        
+        for (let i=0; i<5; i++){
+          const quantityParam = params.get(`quantity${i}`);
+          const quantityValue = parseFloat(quantityParam);
+          if (!isNaN(quantityValue)){
+            quantities[i] = quantityValue;
+          } else {
+            quantities[i] = 0;
+          }
+          }
+          
+          const invoiceTable = document.getElementById('invoiceTable');
+          for (let i = 0; i < quantities.length; i++) {
+            const row = invoiceTable.rows[i + 1];
+            const quantityCell = row.cells[1];
+            quantityCell.textContent = quantities[i];
+          }
+        </script>
 </body>
 </html>
