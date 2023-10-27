@@ -1,3 +1,5 @@
+// products-displayPOKE12.js
+
 //declare and push to the DOM the store name at top and bottom
 const store_name="Keissa Isono";
 top_title.innerHTML=(store_name + "'s Used Smart Phone Store");
@@ -79,6 +81,8 @@ for (let i=0; i < products.length; i++) {
         <h2>${product.name}</h2>
         <p>$${product.price}</p>
         <img src="${product.image}" />
+        <label id="quantity${i}_label" for="quantity${i}">Quantity Desired</label>
+        <input type="text" name="quantity${i}" id="quantity${i}"> 
     </section>`;
 }
 
@@ -86,6 +90,29 @@ for (let i=0; i < products.length; i++) {
 const currentYear = new Date().getFullYear();
 const currentTime = new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
 footer.innerHTML = `Copyright ${currentYear} ${store_name} - ${currentTime}`;
+
+const footerTable = `
+    <table>
+        <tr>
+            <td></td>
+            <td class="table-header">Your One Stop For Used Phones - ${first_name.charAt(0).toUpperCase() + first_name.slice(1)}</td>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td>Copyright @ ${first_name} ${last_name}</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>${currentYear}</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td>${currentTime}</td>
+        </tr>
+    </table>
+`;
+
+bottom_title.innerHTML = footerTable;
 
 function changeClassName(element) {
     if(element.className=='item'){
