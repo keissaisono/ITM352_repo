@@ -26,43 +26,46 @@ function generate_item_rows() {
     let invoiceTable = document.getElementById('invoiceTable');
     let subtotal = 0;
 
-    for(let i in products) {
+    for (let i in products) {
         if (quantities[i] === -1) {
             continue; // Skip this iteration if the quantity indicates an empty input
         }
-
+    
+        // Declare error and errorText variables
         let error = validateQuantity(quantities[i]);
-        
-        let extended_price = 0;
         let errorText = "";
+    
+        let extended_price = 0;
+    
         if (error.length > 0) {
             extended_price = 0;
             errorText = '<div style="color:red;">' + error + '</div>';
         } else {
             extended_price = products[i].price * quantities[i];
         }
-
+    
         if (quantities[i] !== 0 || error.length > 0) {
             let row = invoiceTable.insertRow();
             row.insertCell().innerHTML = products[i].brand;
             row.insertCell().innerHTML = errorText || quantities[i];
             row.insertCell().innerHTML = products[i].price.toFixed(2);
             row.insertCell().innerHTML = extended_price.toFixed(2);
-
-            if(error.length === 0) subtotal += extended_price;
+    
+            if (error.length === 0) subtotal += extended_price;
         }
     }
+    
 
     // Tax, shipping, and total calculations
     let tax = subtotal * 0.0575;
     let shipping = 0;
     if (subtotal <= 50) {
         shipping = 2;
-    } else if (subtotal > 50 && subtotal <= 100) {
+    } else if (subtotal <= 100) {
         shipping = 5;
     } else {
         shipping = 0.05 * subtotal;
-    }
+    }    
     let total = subtotal + tax + shipping;
 
     document.getElementById("subtotal_cell").innerHTML = "$" + subtotal.toFixed(2);
