@@ -1,17 +1,16 @@
-// invoice3.js
-
+//Product Data
 import { itemData, quantity } from './products_data.js';
-const params = new URL (document.location).searchParams;
 
+//const params = new URLSearchParams(document.location).searchParams;
 
-for (let i = 0; i < itemData.length; i++) {
+//let quantity=[];
+
+/*for (let i = 0; i <itemData.length; i++) {
   let quantityValue = params.get(`quantity${i}`);
   if (quantityValue !== null) {
     quantity[itemData[i].quantityIndex] = Number(quantityValue);
   }
-}
-
-import { itemData, quantity } from './products_data.js';
+}*/
 
 //Variables for subtotal, tax, shipping charge, and total
 let subtotal = 0;
@@ -41,28 +40,6 @@ document.getElementById('total_cell').innerHTML = `$${total.toFixed(2)}`;
 document.getElementById('subtotal_cell').innerHTML = '$' + subtotal.toFixed(2);
 document.getElementById('tax_cell').innerHTML = '$' + taxAmount.toFixed(2);
 document.getElementByID('shipping_cell').innerHTML = '$' + shippingCharge.toFixed(2);
-
-/*function validateQuantity (quantity) {
-  let errorMessage = "";
-
-  switch (true) {
-    case isNaN(quantity):
-      errorMessage = "Not a number. Please enter a non-negative quantity to order.";
-      break;
-    case quantity < 0 && !Number.isInteger(quantity):
-      errorMessage = "Negative Inventory and not an integer. Please enter a non-negative quantity to order.";
-      break;
-    case quantity < 0:
-      errorMessage = "Negative Inventory. Please enter a non-negative quantity to order.";
-      break;
-    case !Number.isInteger(quantity):
-      errorMessage = "Not an integer. Please enter a non-negative quantity to order.";
-      break;
-    default:
-      errorMessage = "";
-      break;
-  }
-}*/
 
 //I tried a different method..but it didn't work
 function validateQuantity (quantity) {
