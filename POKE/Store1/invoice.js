@@ -1,16 +1,24 @@
 // Extracting the query string parameters
-let params = (new URL(document.location)).searchParams;
-let quantities = [];
+const params = (new URL(document.location)).searchParams;
+let quantity = [];
+
+for (let i = 0; i < itemData.length; i++) {
+    let quantityValue = params.get(`quantity"${i}`);
+    if (quantityValue !== null) {
+        quantity[itemData[i].quantityIndex] = Number(quantityValue);
+    }
+}
+import { itemData } from './products_data.js';
 
 // Using a loop to go through the expected parameters and populate the quantities array
-for (let i = 0; i < products.length; i++) {
+/*for (let i = 0; i < products.length; i++) {
     let paramValue = params.get("quantity" + i);
     if (paramValue === null || paramValue === "") {
         quantities.push(-1); // Indicates an empty input
     } else {
         quantities.push(parseInt(paramValue));
     }
-}
+}*/
 
 // function to validate quantity from data
 function validateQuantity(quantity) {
