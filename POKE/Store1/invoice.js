@@ -1,86 +1,93 @@
-// Extracting the query string parameters
-const params = (new URL(document.location)).searchParams;
+//Product Data
+const params = (new URL (document.location)).searchParams;
+
 let quantity = [];
 
 for (let i = 0; i < itemData.length; i++) {
-    let quantityValue = params.get(`quantity"${i}`);
-    if (quantityValue !== null) {
-        quantity[itemData[i].quantityIndex] = Number(quantityValue);
-    }
+  let quantityValue = params.get(`quantity${i}`);
+  if (quantityValue !== null){
+    quantity [itemData[i].quantityIndex] = Number (quantityValue);
+  }
 }
+
 import { itemData } from './products_data.js';
 
-// Using a loop to go through the expected parameters and populate the quantities array
-/*for (let i = 0; i < products.length; i++) {
-    let paramValue = params.get("quantity" + i);
-    if (paramValue === null || paramValue === "") {
-        quantities.push(-1); // Indicates an empty input
-    } else {
-        quantities.push(parseInt(paramValue));
-    }
-}*/
+//Variables for subtotal, tax, shipping charge, and total
+let subtotal = 0;
+let taxRate = 0.0575;
+let taxAmount = 0;
+let total = 0;
+let shippingCharge = 0;
 
-// function to validate quantity from data
-function validateQuantity(quantity) {
-    let errors = [];
-    if (isNaN(quantity)) errors.push("Not a number!");
-    if (quantity < 0) errors.push("Negative inventory!");
-    if (!Number.isInteger(Number(quantity))) errors.push("Not an integer!");
-    return errors.join(' ');
+generateItemRows();
+
+if (subtotal <= 50) {
+  shippingCharge = 2;
+} else if (subtotal <= 100) {
+  shippingCharge = 5;
+} else {
+  shippingCharge = subtotal * 0.05;
 }
 
-// function to generate rows based on data and errors
-function generate_item_rows() {
-    let invoiceTable = document.getElementById('invoiceTable');
-    let subtotal = 0;
+//Calculate total with shipping
+taxAmount = subtotal * taxRate;
+total = subtotal + taxAmount + shippingCharge;
 
-    for (let i in products) {
-        if (quantities[i] === -1) {
-            continue; // Skip this iteration if the quantity indicates an empty input
-        }
-    
-        // Declare error and errorText variables
-        let error = validateQuantity(quantities[i]);
-        let errorText = "";
-    
-        let extended_price = 0;
-    
-        if (error.length > 0) {
-            extended_price = 0;
-            errorText = '<div style="color:red;">' + error + '</div>';
-        } else {
-            extended_price = products[i].price * quantities[i];
-        }
-    
-        if (quantities[i] !== 0 || error.length > 0) {
-            let row = invoiceTable.insertRow();
-            row.insertCell().innerHTML = products[i].brand;
-            row.insertCell().innerHTML = errorText || quantities[i];
-            row.insertCell().innerHTML = products[i].price.toFixed(2);
-            row.insertCell().innerHTML = extended_price.toFixed(2);
-    
-            if (error.length === 0) subtotal += extended_price;
-        }
+//Setting total cell
+document.getElementById('total_cell').innerHTML = `$${total.toFixed(2)}`;
+
+//Setting subtotal, tax, and total cells
+document.getElementById('subtotal_cell').innerHTML = '$' + subtotal.toFixed(2);
+document.getElementById('tax_cell').innerHTML = '$' + taxAmount.toFixed(2);
+document.getElementByID('shipping_cell').innerHTML = '$' + shippingCharge.toFixed(2);
+
+//I tried a different method..but it didn't work
+function validateQuantity (quantity) {
+  if (isNaN(quantity)) {
+  return "Not a number";
+  }else if (quantity < 0 && !Number.isInteger(quantity)) {
+  return "Negative Inventory and not an integer";
+  }else if (quantity <0){
+  return "Negative Inventory";
+  }else if (!Number.isInteger(quantity)){
+  return "not an integer";
+  }else {
+  return "";
+  }
+  }
+  
+
+//function to generate table rows and apply quantity validation
+function generateItemRows() {
+  let table = document.getElementById('invoiceTable');
+  table.innerHTML = '';
+  let hasErrors = false;
+  
+  for (let i = 0; i < itemData.length; i++) {
+    let item = itemData[i];
+    let itemQuantity = quantity[item.quantityIndex];
+
+    let validationMessage = validateQuantity(itemQuantity);
+    if (validationMessage !== "") {
+      hasErrors = true;
+      let row = table.insertRow();
+      row.insertCell(0).innerHTML = item.brand;
+      row.insertCell(1).innerHTML = validationMessage;
+    } else if (itemQuantity > 0) {
+      let extendedPrice = item.price * itemQuantity;
+      subtotal += extendedPrice;
+
+      let row = table.insertRow();
+      row.insertCell(0).innerHTML = item.brand;
+      row.insertCell(1).innerHTML = itemQuantity;
+      row.insertCell(2).innerHTML = '$' + item.price.toFixed(2);
+      row.insertCell(3).innerHTML = '$' + extendedPrice.toFixed(2);
     }
-    
+    }
+    //if no error, display total
+    if (!hasErrors){
+      document.getElementById('total_cell').innerHTML = '$' + total.toFixed(2);
+    }
+  }
 
-    // Tax, shipping, and total calculations
-    let tax = subtotal * 0.0575;
-    let shipping = 0;
-    if (subtotal <= 50) {
-        shipping = 2;
-    } else if (subtotal <= 100) {
-        shipping = 5;
-    } else {
-        shipping = 0.05 * subtotal;
-    }    
-    let total = subtotal + tax + shipping;
 
-    document.getElementById("subtotal_cell").innerHTML = "$" + subtotal.toFixed(2);
-    document.getElementById("tax_cell").innerHTML = "$" + tax.toFixed(2);
-    document.getElementById("shipping_cell").innerHTML = "$" + shipping.toFixed(2);
-    document.getElementById("total_cell").innerHTML = "<strong>$" + total.toFixed(2) + "</strong>";
-}
-
-// Trigger the generation of invoice rows upon loading the script
-generate_item_rows();
