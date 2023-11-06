@@ -37,7 +37,7 @@ window.onload = function () {
 //add the checkQuantityTextbox()
 function checkQuantityTextbox(theTextbox) {
     let errs = validateQuantity(theTextbox.value, true);
-    document.getElementById(theTextbox.name + '_message').innerHTML = errs.join(", ");
+    document.getElementById(theTextbox.name + '_message').innerHTML = errs;did 
 }
 
 
