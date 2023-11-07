@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width ,initial-scale=1.0">
-    <title>NewJeans</title>
+    <title>Second Best Coffee Menu</title>
     <link rel="stylesheet" type="text/css" href="products-style.css">
-    <!--NJ logo favicon-->
-    <link rel="icon" type="image/x-icon" href="/Images/favicon_nj_x57.png">
+    <!--Menu logo favicon-->
+    <link rel="icon" type="image/x-icon" href="/Images/home-menu.jpg">
     <script src="./products.js" type="text/javascript">
     </script>
     <!--Background Video-->
@@ -19,7 +19,7 @@
     <script>
 
 // Created function used to check input in the textbox and add an error message below.
-// Used ChatGPT to tweak the below function (lines 23 - 41) to dynamically change my error message, as well as match IR3's criteria
+// Used ChatGPT to tweak the below function (lines 23 - 41) to dynamically change my error message, as well as matchcriteria
 function checkQuantityTextbox(qtyTextbox) {
    const qtyAva = parseInt(qtyTextbox.dataset.qtyAva); // Get available quantity from dataset
    const qty = parseInt(qtyTextbox.value); // Get entered quantity
@@ -40,11 +40,11 @@ function checkQuantityTextbox(qtyTextbox) {
    }
 };
 
-// Lines 44 - 71 based on Branson Suzuki's (F22) store.html, used to display the error messages / alert messages
+
 const params = (new URL(document.location)).searchParams;
 //creating function for use in window onload
 function alertmessage (){
-    var submit_button_msg = "";
+    let submit_button_msg = "";
    for (let i in products) {
     //if I have the quantity data then put back into textboxes
     if (params.has('quantity'+i)) {
@@ -98,7 +98,7 @@ for (i = 0; i < products.length; i++) {
 </script>
         </main>
     </div>
-<h3>Click here to submit your purchase!</h3>
+<h3>Click here to submit your order!</h3>
 <!-- Purchase button here-->
 <footer>
     <input id="purchase_button" type="submit" value="Purchase" name="purchase_submit">

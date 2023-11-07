@@ -12,6 +12,22 @@ body {
     text-shadow: 2px 2px 2px rgba(46,91,173,0.6);
     z-index: 1;
 }
+body {
+    background-image: url("./images/home-coffee.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Add styling for the background container */
+.background-container {
+    background-color: rgba(0, 0, 0, 0.5); /* Background color with some transparency */
+    padding: 20px; /* Add padding to create space around the text */
+    text-align: center; /* Center-align the text within the container */
+    color: white; /* Text color */
+}
+
+/* You can add additional styles as needed */
+
 #icon {
     width: 24px;
     height: 17px;
@@ -19,14 +35,7 @@ body {
     padding: 3px;
     display: inline;
 }
-#myVideo {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-  }
+
 a {
     cursor: url('/Images/cursors/link.cur'), auto;
 }
@@ -48,10 +57,8 @@ a {
 iframe {
     cursor: url('/Images/cursors/normal.cur'), auto;
 }
-#ditto_vid {
-    box-shadow: 2px 2px 2px rgba(46,91,173,0.6);
-    cursor: url('/Images/cursors/normal.cur'), auto;
-}
+
+
 .class {
     color: rgba(0, 0, 0, 0.5);
 }

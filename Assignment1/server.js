@@ -3,11 +3,11 @@
 
 // Declare/get query string as qs to be used later, load product data and express
 const qs = require('node:querystring');
-var products = require(__dirname + '/products.json');
+let products = require(__dirname + '/products.json');
 console.log(products);
 const { query } = require('express');
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 
 // Non Negative Integer function, used later to determine validity, (If q is "")
 function isNonNegInt(q, returnErrors=false) {
@@ -64,9 +64,9 @@ console.log(request.body);
 
 // Below code (lines 67 - 103) based on Branson Suzuki's (F22) server.js 
 // Declaring q as a empty variable, setting the has_quantity default to false (eg. quantities haven't been entered yet), and an empty errors object.
-   var q
-   var has_quantity = false;
-   var errors = {};
+   let q
+   let has_quantity = false;
+   let errors = {};
 
 for (let i in products) {
    q = request.body['quantity' + i];

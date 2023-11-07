@@ -33,11 +33,11 @@
 
         if (errors == 0) { //no error
           extended_price = products_quantities_array[i] * products[i].price;
-          var error_message = ""
+          let error_message = ""
         }
         else { //yes error
           extended_price = 0 * products[i].price;
-          var error_message = errors.join(`<br>`)
+          let error_message = errors.join(`<br>`)
         };
           document.write(`
             <tr>
@@ -60,7 +60,7 @@
     };
 
     
-      var subtotal = 0
+      let subtotal = 0
         
     </script>
 </head>
@@ -78,9 +78,9 @@
           // Invoice prints here
           generate_item_rows(quantities);
           //Compute tax
-           var tax = subtotal*0.0575;
+           let tax = subtotal*0.0575;
           //Compute Shipping
-           var shipping = Number
+           let shipping = Number
              if (subtotal<=50) {
                shipping=2
              } else if(subtotal<=100) {
@@ -90,7 +90,7 @@
                shipping=0.05*subtotal
              };
         //Compute grand total
-        var total = subtotal+tax+shipping;
+        let total = subtotal+tax+shipping;
         
         </script>
           <tr>
