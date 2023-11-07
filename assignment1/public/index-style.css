@@ -29,8 +29,8 @@ body {
 /* You can add additional styles as needed */
 
 #icon {
-    width: 24px;
-    height: 17px;
+    width: 50px;
+    height: 50px;
     cursor: url('/Images/cursors/link.cur'), auto;
     padding: 3px;
     display: inline;
@@ -40,7 +40,7 @@ a {
     cursor: url('/Images/cursors/link.cur'), auto;
 }
 /* Add a hover effect (blue shadow) */
-#bunny:hover {
+#Menu:hover {
     box-shadow: 1 1 20px 10px rgb(0, 29, 60);
 }
 #bunny {

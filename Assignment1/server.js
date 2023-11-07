@@ -1,13 +1,29 @@
 // Created by Keissa Isono
 // Server.js used to validate data inputted in the webstore, and path to either an error message on the same page or redirect to the invoice page
+// Importing the Express.js framework 
+const express = require('express');
+// Create an instance of the Express application called "app"
+// app will be used to define routes, handle requests, etc
+const app = express();
 
+// Monitor all requests regardless of their method (GET, POST, PUT, etc) and their path (URL)
+app.all('*', function (request, response, next) {
+   console.log(request.method + ' to ' + request.path);
+   next();
+});
+
+// Route all other GET requests to serve static files from a directory named "public"
+app.use(express.static(__dirname + '/public'));
+
+// Start the server; listen on port 8080 for incoming HTTP requests
+app.listen(8080, () => console.log(`listening on port 8080`));
 // Declare/get query string as qs to be used later, load product data and express
 const qs = require('node:querystring');
 let products = require(__dirname + '/products.json');
 console.log(products);
 const { query } = require('express');
 let express = require('express');
-let app = express();
+
 
 // Non Negative Integer function, used later to determine validity, (If q is "")
 function isNonNegInt(q, returnErrors=false) {
