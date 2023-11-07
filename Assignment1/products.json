@@ -1,41 +1,32 @@
 [
-    {
-        "name": "Rolex",
-        "price": 20000.00,
-        "image": "./images/Rolex.jpeg", 
-        "description": "Extreme luxury watch made to break the bank.",
-        "amt_ava": 11
+    {  
+    "name": "NewJeans BlueBook Group Version",  
+    "price": 24.00,  
+    "image": "/Images/NJ_BB_grp.jpeg",
+    "qty_ava": 20
     },
-    
-    {
-        "name": "G-Shock",
-        "price": 400.00,
-        "image": "./images/G-shock.jpeg",
-        "description": "Classy, practical watch for those seeking utility.",
-        "amt_ava": 87
+    {  
+    "name": "NewJeans OMG Full Set Version",  
+    "price": 145.00,  
+    "image": "/Images/NJ_OMG_grp.jpeg",
+    "qty_ava": 25
     },
-    
-    {
-        "name": "Apple Watch",
-        "price": 500.00,
-        "image": "./images/Apple_Watch.jpg",
-        "description": "Stylish, sleek watch designed with technological interaction and accesibility.",
-        "amt_ava": 128
+    {  
+    "name": "NewJeans OMG Album Weverse Version",  
+    "price": 16.00,  
+    "image": "/Images/NJ_Weverse_OMG.jpeg",
+    "qty_ava": 35
     },
-    
-    {
-        "name": "Cartier",
-        "price": 2500.00,
-        "image": "./images/Cartier.jpeg",
-        "description": "Premium quality watch designed for those who want to impress.",
-        "amt_ava": 34
+    {  
+    "name": "NewJeans 2023 Season's Greetings",  
+    "price": 68.00,  
+    "image": "/Images/NJ_Room722_SG23.png",
+    "qty_ava": 45
     },
-    
-    {
-        "name": "Nixon",
-        "price": 200.00,
-        "image": "./images/Nixon.jpeg",
-        "description": "Simply styled watch at an affordable price.",
-        "amt_ava": 70
+    {  
+    "name": "NewJeans 1st EP NewJeans Bag",  
+    "price": 45.00,  
+    "image": "/Images/NJ_EP1_White_Bag.png",
+    "qty_ava": 50
     }
-    ]
+  ]
