@@ -5,14 +5,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Second Best Coffee Menu</title>
     <link rel="stylesheet" type="text/css" href="products-style.css">
-    <!-- Menu logo favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/home-menu.jpg">
-    <script type="text/javascript" src="./products.js"></script>
-
+     <!--Menu logo favicon-->
+     <link rel="icon" type="image/x-icon" href="images/home-menu.jpg">
+    <script type="text/json" src="./products.json"></script>
 </head>
 
 <body>
@@ -20,13 +19,24 @@
     <div>
         <main>
             <!-- Product information will be populated dynamically -->
+            <div id="product-list"></div>
         </main>
     </div>
     <h3>Click here to submit your order!</h3>
     <!-- Form to POST the inputs to the server -->
-
+    <form name="purchase_form" action="invoice.html" method="post">
+        <footer>
+            <input id="purchase_button" type="submit" value="Purchase" name="purchase_submit">
+            <script>
+                purchase_button.value = "Submit"; // Provide a valid text for the button
+                purchase_button.style.color = "Pink";
+            </script>
+        </footer>
+    </form>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const productContainer = document.getElementById("product-list");
+
             // Use fetch to load the JSON data
             fetch("products.json")
                 .then(response => response.json())
@@ -44,16 +54,6 @@
                 });
         });
     </script>
-
-    <!-- Specify the action attribute to link to "invoice.html" -->
-    <form name="purchase_form" action="invoice.html" method="post">
-        <footer>
-            <input id="purchase_button" type="submit" value="Purchase" name="purchase_submit">
-            <script>
-                purchase_button.value = submit_button_msg;
-                purchase_button.style.color = "red";
-            </script>
-        </footer>
-    </form>
 </body>
+
 </html>
