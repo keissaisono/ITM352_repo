@@ -47,13 +47,13 @@ let tax_rate = (4.7/100);
 let tax_amt = subtotal * tax_rate;
 
 // Shipping
-if (subtotal < 300) {
+if (subtotal < 10) {
     shipping = 5;
     shipping_display = `$${shipping.toFixed(2)}`;
     total = Number(tax_amt + subtotal + shipping);
 }
-else if (subtotal >= 300 && subtotal < 500) {
-    shipping = 10;
+else if (subtotal >= 10 && subtotal < 20) {
+    shipping = 3;
     shipping_display = `$${shipping.toFixed(2)}`;
     total = Number(tax_amt + subtotal + shipping);
 }

@@ -1,3 +1,5 @@
+//products_display.js
+
 // PRINT PRODUCT CARDS
 for (let i = 0; i < products.length; i++) {
     document.querySelector('.row').innerHTML += `
@@ -36,7 +38,9 @@ for (let i = 0; i < products.length; i++) {
     `;
 }
 
-// PERFORM CLIENT-SIDE DATA VALIDATION
+
+
+//client side data validation
 function isNonNegInt(q, returnErrors = false) {
     errors = []; 
     if ((Number(q) != q) && (q != '')) { 
