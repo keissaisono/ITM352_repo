@@ -6,7 +6,7 @@ body {
     font-size: 20px;
     overflow: auto;
     position: relative;
-    color: white;
+    color: black;
     background-image: url('./images/home-coffee.jpg');
     background-size: cover;
     background-attachment: fixed; /* This line ensures the background is fixed */
@@ -112,7 +112,7 @@ header {
     border-radius: 50px; 
     border: none;
     background-color: #00171f; 
-    color: #f7fcff; 
+    color:white; 
     text-transform: uppercase; 
     letter-spacing: 0.2em;
 }

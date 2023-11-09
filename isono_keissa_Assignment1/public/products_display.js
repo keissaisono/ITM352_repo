@@ -97,7 +97,7 @@ function isNonNegInt(q, returnErrors = false) {
     return (returnErrors ? errors : (errors.length == 0));
 }
 
-// CHECK INPUT BOXES AGAINST DATA VALIDATION FUNCTION
+// check input boxes against data validation function
 // Remove leading 0's
 function checkInputTextbox(textBox) {
     str = String(textBox.value);
@@ -117,7 +117,7 @@ function checkInputTextbox(textBox) {
 };
 
 
-// STICKY NAV BAR: Referenced from https://www.w3schools.com/howto/howto_js_navbar_sticky.asp
+//sticky nav bar: Referenced from https://www.w3schools.com/howto/howto_js_navbar_sticky.asp
 window.onscroll = function() {stickyNav()};
 
 // Get the navbar using its id
