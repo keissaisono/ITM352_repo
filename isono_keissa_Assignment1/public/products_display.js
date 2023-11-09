@@ -1,8 +1,40 @@
 //products_display.js
+let products = [
+    {  
+    "name": "Latte",  
+    "price": 5.75,  
+    "image": "./images/latte.jpeg",
+    "qty_available": 100
+    },
+    {  
+    "name": "Cappucino",  
+    "price": 4.50,  
+    "image": "./images/cappucino.jpeg",
+    "qty_available": 100
+    },
+    {  
+    "name": "Macchiato",  
+    "price": 4.00,  
+    "image": "./images/macchiato.jpeg",
+    "qty_available": 100
+    },
+    {  
+    "name": "Espresso",  
+    "price": 3.50,  
+    "image": "./images/espresso.jpeg",
+    "qty_available": 100
+    },
+    {  
+    "name": "Americano",  
+    "price": 5.00,  
+    "image": "./images/americano.jpeg",
+    "qty_available": 100
+    }
+  ];
 
 // PRINT PRODUCT CARDS
 for (let i = 0; i < products.length; i++) {
-    document.querySelector('.row').innerHTML += `
+    document.querySelector('.main').innerHTML += `
         <div class="col-md-6 product_card" style="margin-bottom: 40px; padding: 15px;">
             <div>
                 <h5 style="float: left;" class="product_name">${products[i].name}</h5>
