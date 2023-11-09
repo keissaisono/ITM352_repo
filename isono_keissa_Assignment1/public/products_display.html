@@ -1,3 +1,4 @@
+<!--products_display.html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,31 +8,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
     <script src="products.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="products-style.css">
+    <link rel="stylesheet" href="products-style.css">
 </head>
-</header>
-
-<!--title of store-->
-<div class="jumbotron">
-    <div class="container text-center">
-    <h1><span id="top_title">The Second Best Coffee Shop</span></h1>
-    <p>Because, can it be the second best? Who's to say?</p>
-    </div>
-</div>
-
-</header>    
 <body>
-    <form action="./receipt.html" method = "GET">
-    <div>
-        <main class="main">
-        </main>
+    <!-- Title of store -->
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1><span id="top_title">The Second Best Coffee Shop</span></h1>
+            <p>Because, can it be the second best? Who's to say?</p>
+        </div>
+    </div>
+
+    <!-- EXPANDING NAVBAR WITH MINIMIZED SCREEN -->
+    <div id="sticky-navbar">
+        <nav class="navbar navbar-expand-md">
+            <!-- Button to toggle nav bar -->
+            <button class="navbar-toggler" id="toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa-solid fa-bars"></span>
+            </button>  
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav">
+                    <a class="nav-link mx-3 highlight" href="./index.html">Home</a></li>
+                    <a class="nav-link mx-3 highlight" href="./products_display.html">Products</a>
+                </div>
+            </div>   
+        </nav>
+    </div>
+
+    <!-- Main content container -->
+    <main class="main container">
+        <!-- Product cards will be dynamically added here -->
+    </main>
+
+    <!-- Purchase form -->
+    <form action="./receipt.html" method="GET">
+        <footer>
+            <input type="submit" value="Purchase">
+        </footer>
+    </form>
+
+    <!-- Bottom footer -->
+    <footer>
+        <h3><span id="bottom_title"></span></h3>
+    </footer>
+
+    <!-- JavaScript file -->
+    <script src="./products_display.js"></script>
 </body>
-<footer>
-    <input type="submit" value="Purchase">
-</footer>
-</form>
-<footer>
-    <h3><span id="bottom_title"></span></h3>
-</footer>
-<script src="./products_display.js"></script>
 </html>

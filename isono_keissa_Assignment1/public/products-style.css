@@ -9,12 +9,13 @@ body {
     color: white;
     background-image: url('./images/home-coffee.jpg');
     background-size: cover;
-
+    background-attachment: fixed; /* This line ensures the background is fixed */
 }
+
 
 /* Image styling */
 img {
-    max-width: 100px;
+    max-width: 150px;
 }
 .img-thumbnail {
     border: none;
@@ -126,5 +127,19 @@ header {
     }
     td {
         font-size: 16px;
+    }
+}
+
+/* Product card styling */
+.product_card {
+    margin-bottom: 40px;
+    padding: 15px;
+}
+
+/* Adjusting responsive screen */
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
