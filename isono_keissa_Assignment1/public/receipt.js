@@ -1,5 +1,75 @@
+[{
+    "name": "Latte",
+    "price": 5.75,
+    "image": "/images/latte.jpeg",
+    "alt": "Latte image",
+    "qty_available": 0,
+    "qty_sold": 100
+}, {
+    "name": "Cappucino",
+    "price": 4.50,
+    "image": "/images/cappucino.jpeg",
+    "alt": "Cappucino image",
+    "qty_available": 1,
+    "qty_sold": 75
+}, {
+    "name": "Macchiato",
+    "price": 4.00,
+    "image": "/images/macchiato.jpeg",
+    "alt": "Macchiato image",
+    "qty_available": 0,
+    "qty_sold": 27
+}, {
+    "name": "Espresso",
+    "price": 3.50,
+    "image": "/images/espresso.jpeg",
+    "alt": "Espresso image",
+    "qty_available": 0,
+    "qty_sold": 110
+}, {
+    "name": "Americano",
+    "price": 5.00,
+    "image": "./images/StarWars.jpg",
+    "alt": "/images/americano.jpeg",
+    "qty_available": 0,
+    "qty_sold": 80
+}];
+
+    let purchaseData = [
+        { productId: 0, quantity: 2 },
+        { productId: 1, quantity: 1 },
+        // Add more purchase data as needed
+    ];
+
+
+
+    // Iterate over the purchase data
+    purchaseData.forEach((purchase) => {
+        let product = products[purchase.productId];
+
+        // Check if the product and quantity are valid
+        if (product && purchase.quantity > 0 && purchase.quantity <= product.qty_available) {
+            let extendedPrice = (purchase.quantity * product.price).toFixed(2);
+            subtotal += parseFloat(extendedPrice);
+
+            // Append a row to the table
+            document.querySelector('#invoice_table').innerHTML += `
+                <tr style="border: none;">
+                    <td width="10%"><img src="${product.image}" alt="${product.alt}" style="border-radius: 5px;"></td>
+                    <td>${product.name}</td>
+                    <td>${purchase.quantity}</td>
+                    <td>${product.qty_available - purchase.quantity}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>$${extendedPrice}</td>
+                </tr>
+            `;
+        }
+    });
+
 // Get the URL
 let params = (new URL(document.location)).searchParams;
+console.log(params);
+
 
 
 // On load, if there is no 'valid' key, redirect the user back to the Home page
