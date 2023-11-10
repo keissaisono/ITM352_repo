@@ -136,10 +136,3 @@ header {
     padding: 15px;
 }
 
-/* Adjusting responsive screen */
-@media (min-width: 768px) and (max-width: 991px) {
-    .col-md-4 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}

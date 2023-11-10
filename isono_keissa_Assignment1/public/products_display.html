@@ -1,19 +1,36 @@
 <!--products_display.html-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Menu</title>
-    <link rel="stylesheet" href="https://maxcns.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script> 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
-    <script src="products.js" defer></script>
+
+    <!-- Loading products information -->
+    <script src="../products.json" defer></script>
     <link rel="stylesheet" href="products-style.css">
 
-    
-</head>
-<body>
+    <style>
+        .jumbotron {
+            background-color: black; /* Change 'yourColorCode' to your desired color code */
+            color: white; /* Set text color to contrast with the background */
+        }
+        /* Add the following rule to make text within product cards white */
+        .product_card {
+            color: white;
+        }
+        /* Add the following rule to make quantity values not white */
+        .product_card .inputBox {
+            color: black; /* Change 'black' to your desired color for quantity text */
+        }
+    </style>
 
+</head>
+
+<body>
 <!--title of store-->
 <div class="jumbotron">
     <div class="container text-center">
@@ -21,7 +38,8 @@
         <p>Because, can it be the second best? Who's to say?</p>
     </div>
 </div>
-
+</head>
+<body>
 
     <!-- EXPANDING NAVBAR WITH MINIMIZED SCREEN -->
     <div id="sticky-navbar">
