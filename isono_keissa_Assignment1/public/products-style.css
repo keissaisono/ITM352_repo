@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Jost|Actor|Alef');
-
+/* products-style.css */
 body {
     font-family: 'Jost', 'Actor', 'Alef', Helvetica, Arial, sans-serif;
     margin: 0 auto;
@@ -144,3 +143,14 @@ header {
     padding: 15px;
 }
 
+/* Add this style for the "cart" button */
+.navbar a.cart-btn {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Add this style for the "cart" button on hover */
+.navbar a.cart-btn:hover {
+    color: white;
+}
