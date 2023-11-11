@@ -7,9 +7,17 @@ body {
     overflow: auto;
     position: relative;
     color: black;
-    background-image: url('./images/home-coffee.jpg');
+    background-image: url('./images/coffee-bean.jpeg');
     background-size: cover;
     background-attachment: fixed; /* This line ensures the background is fixed */
+}
+
+body {
+    color: black;
+}
+
+th {
+    color: black;
 }
 
 
@@ -50,7 +58,7 @@ header {
 .navbar {
     min-height: 80px;
     width: 100%;
-    background-color: pink;
+    background-color: brown;
     text-transform: uppercase;
     border-radius: 0;
 }

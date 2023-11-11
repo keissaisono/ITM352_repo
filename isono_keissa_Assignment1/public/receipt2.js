@@ -1,59 +1,39 @@
-// Get the URL
-let params = (new URL(document.location)).searchParams;
+fetch('./products.js')
+    .then(response => response.json()
+        .then(productData => {
+            //use productData as needed
+            console.log(productData);
+        }))
+        .catch(error => console.error('Error fetching product data:',error));
 
+//product data
+const productDataElement = document.getElementById('productData');
+const products = productDataElement ? productDataElement.products : [];
 
-// On load, if there is no 'valid' key, redirect the user back to the Home page
-window.onload = function() {
-    if (!params.has('valid')) {
-        document.write(`
-            <head>
-                <link rel="stylesheet" href="syle.css">
-            </head>
-            <body style="text-align: center; margin-top: 10%;">
-                <h2>ERROR: No form submission detected.</h2>
-                <h4>Return to <a href="index.html">Home</a></h4> 
-            </body>
-        `)
+for (let i = 0; i < itemData.length; i++) {
+    let quantityValue = params.get(`quantity${i}`);
+    if (quantityValue !== null) {
+        quantity[itemData[i].quantityIndex] = Number(quantityValue);
     }
 }
 
+//variables for subtotal, tax, shipping, and total
 let subtotal = 0;
+let taxRate = (4.7/100);
+let taxAmount = 0;
+let shipping = 0;
+let total = 0;
 
-let qty = [];
-for (let i in products) {
-    qty.push(params.get(`qty${i}`));
-}
+generateItemRows();
 
-for (let i in qty) {
-    if (qty[i] == 0 || qty[i] == '') continue;
-
-    extended_price = (params.get(`qty${i}`) * products[i].price).toFixed(2);
-    subtotal += Number(extended_price);
-
-    document.querySelector('#invoice_table').innerHTML += `
-        <tr style="border: none;">
-            <td width="10%"><img src="${products[i].image}" alt="${products[i].alt}" style="border-radius: 5px;"></td>
-            <td>${products[i].name}</td>
-            <td>${qty[i]}</td>
-            <td>${products[i].qty_available}</td>
-            <td>$${products[i].price.toFixed(2)}</td>
-            <td>$${extended_price}</td>
-        </tr>
-    `;
-}
-
-// Sales tax
-let tax_rate = (4.7/100);
-let tax_amt = subtotal * tax_rate;
-
-// Shipping
-if (subtotal < 300) {
+//calculate shipping
+if (subtotal < 10) {
     shipping = 5;
     shipping_display = `$${shipping.toFixed(2)}`;
     total = Number(tax_amt + subtotal + shipping);
 }
-else if (subtotal >= 300 && subtotal < 500) {
-    shipping = 10;
+else if (subtotal >= 10 && subtotal < 20) {
+    shipping = 3;
     shipping_display = `$${shipping.toFixed(2)}`;
     total = Number(tax_amt + subtotal + shipping);
 }
@@ -63,23 +43,60 @@ else {
     total = Number(tax_amt + subtotal + shipping);
 }
 
-document.querySelector('#total_display').innerHTML += `
-    <tr style="border-top: 2px solid black;">
-        <td colspan="5" style="text-align:center;">Sub-total</td>
-        <td>$${subtotal.toFixed(2)}</td>
-    </tr>
-    <tr>
-        <td colspan="5" style="text-align:center;">Tax @ ${Number(tax_rate) * 100}%</td>
-        <td>$${tax_amt.toFixed(2)}</td>
-    </tr>
-    <tr>
-        <td colspan="5" style="text-align:center;">Shipping</td>
-        <td>${shipping_display}</td>
-    </tr>
-    <tr>
-        <td colspan="5" style="text-align:center;"><b>Total</td>
-        <td><b>$${total.toFixed(2)}</td>
-    </tr>
-`;
+//calculate total with shipping
+taxAmount = subtotal * taxRate;
+total = subtotal + taxAmount + shipping;
 
+//setting total cell
+document.getElementById('total_cell').innerHTML = `$${total.toFixed(2)}`;
+//setting subtotal, tax, and total cells
+document.getElementById('subtotal_cell').innerHTML = '$' + subtotal.toFixed(2);
+document.getElementById('tax_cell').innerHTML = '$' + taxAmount.toFixed(2);
+document.getElementById('shipping_cell').innerHTML = shipping.toFixed(2);
+
+//validate quantity
+function validateQuantity(quantity) {
+    if (isNaN(quantity)) {
+        return "not a number";
+    } else if (quantity < 0 && !Number.isInteger(quantity)) {
+        return "negative inventory and not an integer";
+    } else if (quantity < 0) {
+        return "negative inventory";
+    } else if (!Number.isInteger(quantity)) {
+        return "not an integer";
+    } else {
+        return "";
+    }
+}
+
+//function to generate table rows and apply quantity validation
+function generateItemRows() {
+    let table = document.getElementById('invoiceTable');
+    table.innerHTML = '';
+    let hasErrors = false;
+
+    for (let i = 0; i < products.length; i++) {
+        let product = products[i];
+        let itemQuantity = quantity[product.quantityIndex];
+
+        let validationMessage = validateQuantity(itemQuantity);
+        if (validationMessage !== "") {
+            hasErrors = true;
+            let row = table.insertRow();
+            row.insertCell(0).innerHTML = product.name;
+            row.insertCell(1).innerHTML = validationMessage;
+        } else if (itemQuantity > 0) {
+            let extendedPrice = product.price * itemQuantity;
+            subtotal += extendedPrice;
+
+            let row = table.insertRow();
+            row.insertCell(0).innerHTML = product.name;
+            row.insertCell(1).innerHTML = itemQuantity;
+            row.insertCell(2).innerHTML = '$' + product.price.toFixed(2);
+            row.insertCell(3).innerHTML = '$' + extendedPrice.toFixed(2);
+        }
+    }
+
+
+}
 

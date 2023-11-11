@@ -1,0 +1,42 @@
+<!--receipt.html-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <script src="./products.js"></script>
+</head>
+<body>
+    <table border="2"
+    <tbody>
+        <thead
+        <tr>
+            <th style="text-align: center;" width="43%">Item</th>
+            <th style="text-align: center;" width="11%">Quantity</th>
+            <th style="text-align: center;" width="11%">Price</th>
+            <th style="text-align: center;" width="54%">Extended Price</th>
+        </tr>
+        </thead>
+    <tbody id="invoice_table"></tbody>
+    <!--product rows will be added dynaically using javascript-->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Sub-Total</td><td id="subtotal_cell"></td>
+        </tr>
+        <tr>
+            <td colspan="3">Tax</td><td id="tax_cell"></td>
+        </tr>
+        <tr>
+            <td colspan="3">Shipping</td><td id="Shipping_cell"></td>
+        </tr>
+        <tr>
+            <td colspan="3">Total</td><td id="total_cell"></td>
+        </tr>
+    </tfoot>
+</table>
+<script src = "./receipt-copy.js" type="module"></script>
+
+    <div id="receiptContent"></div>
+</body>
+</html>
