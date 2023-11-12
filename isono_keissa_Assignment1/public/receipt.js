@@ -1,14 +1,35 @@
 let purchaseData = [
-    { productId: 0, quantity: 2 },
-    { productId: 1, quantity: 1 },
-    { productId: 2, quantity: 3 },
-    { productId: 3, quantity: 1 },
-    { productId: 4, quantity: 1 },
+    { productId: 0, quantity: 0 },
+    { productId: 1, quantity: 0 },
+    { productId: 2, quantity: 0 },
+    { productId: 3, quantity: 0 },
+    { productId: 4, quantity: 0 },
     // Add more purchase data as needed
 ];
 
+function addToCart(productId) {
+    // Get the quantity input value
+    let quantityInput = document.getElementById(`quantity_input_${productId}`);
+
+    // Check if the quantityInput is found
+    if (!quantityInput) {
+        console.error(`Quantity input not found for product with ID ${productId}.`);
+        return;
+    }
+
+    let quantity = parseInt(quantityInput.value);
+
+    // Update the purchaseData array with the entered quantity
+    purchaseData[productId].quantity = quantity;
+
+    // Optionally, log the updated purchaseData for debugging
+    console.log('Updated purchaseData:', purchaseData);
+}
+// Assume purchaseData is already defined and populated
+
 // Initialize subtotal before the loop
 let subtotal = 0;
+let tableRows = ''; // Variable to accumulate HTML content for table rows
 
 // Iterate over the purchase data
 purchaseData.forEach((purchase) => {
@@ -16,11 +37,12 @@ purchaseData.forEach((purchase) => {
 
     // Check if the product and quantity are valid
     if (product && purchase.quantity > 0 && purchase.quantity <= product.qty_available) {
-        let extendedPrice = (purchase.quantity * product.price).toFixed(2);
+        // Repeat the product entry based on the quantity
+        let extendedPrice = (product.price * purchase.quantity).toFixed(2);
         subtotal += parseFloat(extendedPrice);
 
-        // Append a row to the table inside the loop
-        document.querySelector('#invoice_table').innerHTML += `
+        // Accumulate HTML content for the table rows
+        tableRows += `
             <tr style="border: none;">
                 <td width="10%"><img src="${product.image}" alt="${product.alt}" style="border-radius: 5px;"></td>
                 <td>${product.name}</td>
@@ -30,8 +52,16 @@ purchaseData.forEach((purchase) => {
                 <td>$${extendedPrice}</td>
             </tr>
         `;
+    } else {
+        console.log(`Invalid quantity (${purchase.quantity}) for product with ID ${purchase.productId}.`);
     }
 });
+
+
+// Set the innerHTML for the table
+document.querySelector('#invoice_table').innerHTML = tableRows;
+
+
 
 // Sales tax
 let tax_rate = (4.7 / 100);

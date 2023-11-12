@@ -154,3 +154,22 @@ header {
 .navbar a.cart-btn:hover {
     color: white;
 }
+
+
+.jumbotron {
+    background-color: black; /* Change 'yourColorCode' to your desired color code */
+    color: white; /* Set text color to contrast with the background */
+}
+
+body {
+    color: black;
+}
+
+th {
+    color: white;
+}
+
+.jumbotron {
+    background-color: black;
+    color: white;
+}
