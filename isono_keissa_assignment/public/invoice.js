@@ -1,39 +1,36 @@
-//initializes variables
+//initialize variables
 let extendedPrices = [];
 let extendedPrice = 0;
 let subtotal = 0;
 let taxAmount = 0;
 let shipping = 0;
 
-//opens the url params
+//opens the url params and creates an array of the values
 let params = (new URL(document.location)).searchParams;
-        //initializes empty order array
-        let order = [];
-        //for each prod, push the value to the array
-        params.forEach((value,key) => {
-            if (key.startsWith('prod')) {
-                    order.push(parseInt(value));
-                }
-        });
-
-        
+    //initializes empty order array
+    let order = [];
+    //for each prod, push the value to the array
+    params.forEach((value,key) => {
+        if (key.startsWith('prod')) {
+            order.push(parseInt(value));
+            }
+});
 
         //console.log(order);
         
-        
-//generate all the item rows
+//generate all the item rows from the order array
 generateItemRows();
 
 
 
-// calculate subtotal
+//calculate subtotal and extended price
 
-//calculate tax
+//calculate tax amount
  let tax = (subtotal*0.0575);
 
 
 
-//checks the shipping price
+//checks the shipping price based on subtotal
 if(subtotal <= 50)
 {
     shipping = 2;
@@ -45,11 +42,11 @@ else{
     shipping = subtotal*.05;
 }
 
-//calculates total
+//calculates total price
 let total = tax+subtotal+shipping;
 
 
-//insert footer row values
+//insert footer row values into the table
 document.getElementById("subtotal_cell").innerHTML = "$" + subtotal.toFixed(2);
 document.getElementById("tax_cell").innerHTML = "$" + tax.toFixed(2);
 document.getElementById("shipping_cell").innerHTML = "$"+shipping.toFixed(2);
@@ -96,7 +93,7 @@ function generateItemRows(){
         if(validationMessage !== ""){
             hasErrors = true;
             let row =table.insertRow();
-            row.insertCell(0).insertHTML = item.card;
+            row.insertCell(0).insertHTML = item.name;
             row.insertCell(1).innerHTML = validationMessage;
         } 
         //otherwise, lets create the row in the invoice and update the extended price and subtotal
@@ -105,10 +102,10 @@ function generateItemRows(){
             extendedPrice = item.price * itemQuantity;
             subtotal += extendedPrice;
 
-            //create a new row and insert the info
+            //create a new row and insert the info. referenced POKE invoice3 assignment for previous code.
             let row = table.insertRow();
             row.insertCell(0).innerHTML = `<img src="${item.image}" class="img-small" name = "img">`;
-            row.insertCell(1).innerHTML = item.card;
+            row.insertCell(1).innerHTML = item.name;
             row.insertCell(2).innerHTML = itemQuantity;
             row.insertCell(3).innerHTML = "$" + item.price.toFixed(2);
             row.insertCell(4).innerHTML = "$"+extendedPrice.toFixed(2);

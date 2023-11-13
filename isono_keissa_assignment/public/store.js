@@ -38,7 +38,7 @@ for (let i = 0; i < products.length; i++) {
                 <img src="${products[i].image}" class="card-img-top border-top" alt="Product Image">
             </div>
             <div class="card-body">
-                <h5 class="card-title">${products[i].card}</h5>
+                <h5 class="card-title">${products[i].name}</h5>
                 <p class="card-text">
                     Price: $${(products[i].price).toFixed(2)}<br>
                     Available: ${products[i].qty_available}<br>
