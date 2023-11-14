@@ -1,121 +1,108 @@
-// Importing the Express.js framework 
 const express = require('express');
-// Create an instance of the Express application called "app"
-// app will be used to define routes, handle requests, etc
 const app = express();
 
+// Middleware for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-//grabs everything from public
-app.use(express.static(__dirname + '/public'));
+// Your other middleware and route handlers
+app.all('*', function (request, response, next) {
+   console.log(request.method + ' to ' + request.path);
+   next();
+});
 
-//sets up the product array from the json file
-let products = require(__dirname + '/products.json');
-products.forEach( (prod,i) => {prod.total_sold = 0});
+// Import product data
+const products = require(__dirname + "/products.json");
+// Initialize quantity sold for each product
+products.forEach(product => {
+    product.qty_sold = 0;
+});
 
-// Define a route for handling a GET request to a path that matches "./products.js"
-app.get("/products.js", function (request, response, next) {
+// Serve product data
+app.get('/products.js', function(request, response) {
     response.type('.js');
-    let products_str = `var products = ${JSON.stringify(products)};`;
-    //console.log(products_str);
+    const products_str = `let products = ${JSON.stringify(products)};`;
     response.send(products_str);
 });
 
+// Process purchase
+app.post('/process-purchase', (req, res) => {
+    let validationErrors = quantityValidation(req.body, products);
+    
+    if (validationErrors.length > 0) {
+        // Redirect with error messages
+        res.redirect('/products_display.html?errors=' + encodeURIComponent(JSON.stringify(validationErrors)));
+    } else {
+        // Create an array to hold the invoice items
+        const invoiceItems = products.map(product => {
+            const quantityKey = `quantity_${product.name.replace(/\s+/g, '_')}`;
+            const quantity = parseInt(req.body[quantityKey], 10);
+            if (quantity > 0) {
+                // Update available quantity
+                product.qty_available -= quantity;
+                // Update quantity sold
+                product.qty_sold += quantity;
 
-//whenever a post with proccess form is recieved
-app.post("/process_form", function (request, response) {
-
-    //get the textbox inputs in an array
-    let qtys = request.body[`quantity_textbox`];
-    //initially set the valid check to true
-    let valid = true;
-    //instantiate an empty string to hold the url
-    let url = '';
-    let soldArray =[];
-
-    //for each member of qtys
-    for (i in qtys) {
-        
-        //set q as the number
-        let q = Number(qtys[i]);
-        
-        //console.log(validateQuantity(q));
-        //if the validate quantity string is empty
-        if (validateQuantity(q)=='') {
-            //check if we will go into the negative if we buy this, set valid to false if so
-            if(products[i]['qty_available'] - Number(q) < 0){
-                valid = false;
-                url += `&prod${i}=${q}`
+                // Return the item for the invoice
+                return {
+                    name: product.name,
+                    quantity: quantity,
+                    price: product.price,
+                    extendedPrice: quantity * product.price
+                };
             }
-            // otherwise, add to total sold, and subtract from available
-            else{
-               
-                soldArray[i] = Number(q);
-                
-                //add argument to url
-                url += `&prod${i}=${q}`
+            return null;
+        }).filter(item => item != null); // Remove null entries where quantity was not greater than 0
+
+        // Encode the invoice items array as a JSON string
+        const invoiceQueryString = encodeURIComponent(JSON.stringify(invoiceItems));
+        // Redirect to the invoice page with the invoice data as a query parameter
+        res.redirect(`/invoice.html?invoiceData=${invoiceQueryString}`);
+    }
+});
+
+function quantityValidation(reqBody, products) {
+    let errors = [];
+    let totalQuantitySelected = 0;
+
+    // Check each product for selected quantity and validate
+    products.forEach(product => {
+        const quantityKey = `quantity_${product.name.replace(/\s+/g, '_')}`;
+        let quantityStr = reqBody[quantityKey];
+
+        // Check if the quantity is defined and not empty
+        if (quantityStr !== undefined && quantityStr.trim() !== '') {
+            let quantity = parseInt(quantityStr, 10);
+
+            // Check if the parsed number is an integer and not NaN
+            if (!isNaN(quantity) && quantity.toString() === quantityStr.trim()) {
+                totalQuantitySelected += quantity;
+
+                if (quantity < 0) {
+                    errors.push(`Negative quantity for ${product.name} is not allowed.`);
+                } else if (quantity > product.qty_available) {
+                    errors.push(`Insufficient quantity available for ${product.name}. Only ${product.qty_available} left.`);
+                }
+            } else {
+                // If the quantity is not an integer or is NaN
+                errors.push(`Invalid quantity for ${product.name}. Please enter a positive whole number.`);
             }
-            
-            
         }
-        //if the validate quantity string has stuff in it, set valid to false
-         else {
-            
-            valid = false;
-            url += `&prod${i}=${q}`
-        }
-        //check if no products were bought, set valid to false if so
-        if(url == `&prod0=0&prod1=0&prod2=0&prod3=0&prod4=0&prod5=0`){
-            valid = false
-        }
-    }
-    //if its false, return to the store with error=true
-    if(valid == false)
-    {
-       
-        response.redirect(`store.html?error=true` + url);
-        
-        
-    }
-    //otherwise, redirect to the invoice with the url attached
-    else{
+    });
 
-         for (i in qtys)
-        {
-            //update total and qty only if everything is good
-            products[i]['total_sold'] += soldArray[i];
-            products[i]['qty_available'] -= soldArray[i];
-        }
-        
-        response.redirect('invoice.html?' + url);
-        
-    }
- });
-
-// Route all other GET requests to serve static files from a directory named "public"
-
-app.all('*', function (request, response, next) {
-    //console.log(request.method + ' to ' + request.path);
-    next();
- });
-
-// Start the server; listen on port 8080 for incoming HTTP requests
-app.listen(8080, () => console.log(`listening on port 8080`));
-
-//function to validate the quantity, returns a string if not a number, negative, not an integer, or a combination of both
-//if no errors in quantity, returns empty string
-function validateQuantity(quantity){
-    //console.log(quantity);
-    if(isNaN(quantity)){
-        return "Not a Number";
-    }else if (quantity<0 && !Number.isInteger(quantity)){
-        return "Negative Inventory & Not an Integer";
-    }else if (quantity <0){
-        return "Negative Inventory";
-    }else if(!Number.isInteger(quantity)){
-        return "Not an Integer";
-    }else{
-        return"";
+    // Check for total quantity selected
+    if (totalQuantitySelected === 0 && errors.length === 0) {
+        // If no valid quantities have been entered and no other errors have been collected
+        errors.push('No quantities were selected. Please select at least one product.');
     }
 
+    return errors;
 }
+
+
+
+
+// Serve static files from 'public' directory
+app.use(express.static(__dirname + '/public'));
+
+// Start the server
+app.listen(8080, () => console.log(`listening on port 8080`));
