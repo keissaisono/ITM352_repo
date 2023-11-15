@@ -53,8 +53,8 @@ document.getElementById("shipping_cell").innerHTML = "$"+shipping.toFixed(2);
 document.getElementById("total_cell").innerHTML = "$"+total.toFixed(2);
 
 
-//a function designed to validate quantity, returning a string if the input is not a number, negative, not an integer, or a combination of these conditions.
-//if there are no errors in the quantity, the function returns an empty string.
+//function to validate the quantity, returns a string if not a number, negative, not an integer, or a combination of both
+//if no errors in quantity, returns empty string
 function validateQuantity(quantity){
     if(isNaN(quantity)){
         return "Please Enter a Number";

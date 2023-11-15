@@ -1,11 +1,8 @@
-let purchaseData = [
-    { productId: 0, quantity: 0 },
-    { productId: 1, quantity: 0 },
-    { productId: 2, quantity: 0 },
-    { productId: 3, quantity: 0 },
-    { productId: 4, quantity: 0 },
-    // Add more purchase data as needed
-];
+let extendedPrices = [];
+let extendedPrice = 0;
+let subtotal = 0;
+let taxAmount = 0;
+let shipping = 0;
 
 function addToCart(productId) {
     // Get the quantity input value
@@ -28,7 +25,7 @@ function addToCart(productId) {
 // Assume purchaseData is already defined and populated
 
 // Initialize subtotal before the loop
-let subtotal = 0;
+
 let tableRows = ''; // Variable to accumulate HTML content for table rows
 
 // Iterate over the purchase data
@@ -68,7 +65,7 @@ let tax_rate = (4.7 / 100);
 let tax_amt = subtotal * tax_rate;
 
 // Shipping
-let shipping = 0;
+
 let shipping_display = 'FREE';
 
 if (subtotal < 10) {
