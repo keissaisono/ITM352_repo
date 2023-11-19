@@ -1,4 +1,4 @@
-//set up params from headder, order array, and error value
+//set up params from header, order array, and error value
 let params = (new URL(document.location)).searchParams;
 let error;
 let order = [];
