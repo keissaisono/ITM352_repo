@@ -29,19 +29,6 @@ app.get('/use_session', (request, response) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const fs = require('fs');
 
 let filename = __dirname + '/user_data.json';
